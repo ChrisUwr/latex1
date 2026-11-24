@@ -63,55 +63,54 @@ michał, michał, michał, michał, co z ciebie wyrosnie??
 \end{abstract}
 
 \section{Wprowadzenie}
-Logiki modalne zostały wprowadzone w celu poszerzenia rachunku zdań o możliwość wyrażania \emph{możliwości} ($\lozenge$) i \emph{konieczności} ($\square$). 
-Początkowo te logiki były wykorzystywane głównie przez filozofów. 
-Wraz z rozwojem komputerów zaczęto szukać sposobu, aby wykorzystywać te logiki do weryfikacji programów komputerowych oraz sprzętu. 
-Ze względu na stosunkowo małą siłę wyrazu klasyczne logiki modalne okazują się jednak często niewystarczające, więc zaproponowano wiele rozszerzeń tych logik.
-
-Zdaniowa logika dynamiczna (PDL), wprowadzona w \cite{FLA77}, jest jednym z najbardziej znanych rozszerzeń logik modalnych. 
-Szczególnie dobrze nadaje się do opisywania własności programów zapisanych w imperatywnych językach programowania, gdyż pozwala elegancko wyrażać pętle oraz składanie instrukcji. 
-Rok po wprowadzeniu logiki PDL w pracy \cite{PRA78} udowodniono, że problem spełnialności dla tej logiki jest \textsc{Exptime}-zupełny. 
-Dla porównania, problem spełnialności dla zwykłych logik modalnych jest \textsc{PSpace}-zupełny.
-
-Strzeżony fragment logiki pierwszego rzędu, zwany również logiką ze strażnikami ($\mathrm{GF}$), został po raz pierwszy wprowadzony w pracy \cite{ANB96}. 
-Główną motywacją przy definiowaniu tej logiki była chęć zanurzenia logiki modalnej w logice pierwszego rzędu w taki sposób, by nie utracić rozstrzygalności podstawowych problemów decyzyjnych. 
-W odróżnieniu od zwykłej logiki pierwszego rzędu, w logice ze strażnikami wymagamy, by po każdym kwantyfikatorze pojawił się \emph{strażnik}, to znaczy formuła, która ogranicza wszystkie zmienne wolne występujące w podformule, którą wiąże ten kwantyfikator. 
-Pełną definicję $\mathrm{GF}$ można znaleźć w rozdziale \ref{preliminaria}.
-
-W pracy, w której zdefiniowano $\mathrm{GF}$ (\cite{ANB96}), pokazano również dowód rozstrzygalności problemu spełnialności dla wariantu $\mathrm{GF}$ bez równości. 
-W ogólnym przypadku problem spełnialności okazał się być \textsc{2Exptime}-zupełny (\cite{GRA98}), jednak przy ograniczonej liczbie zmiennych w formule problem staje się jedynie \textsc{Exptime}-zupełny. 
-Dla porównania, fragment logiki pierwszego rzędu z dwiema zmiennymi ($\mathrm{FO^2}$) jest \textsc{NExptime}-zupełny (\cite{GKV97}).
-
-Okazuje się, że zdania standardowej logiki modalnej można w prosty sposób przełożyć na zdania logiki ze strażnikami z dwiema zmiennymi, zastępując zmienne przez unarne predykaty oraz operatory modalne przez kwantyfikatory (\cite{BEN76}, \cite{BEN84}). 
-Taki przekład zwiększa złożoność obliczeniową problemu spełnialności z \textsc{PSpace} do \textsc{Exptime}, jednak w $\mathrm{GF^2}$ można wyrazić więcej własności. 
-
-(\dots)
+\subsection{Czas uniksowy}
+Sposób zapisywania daty i czasu jako liczby sekund, które upłynęły od 1 stycznia 1970 roku o godzinie 00:00:00 UTC.
+\subsection{Problem roku 2038}
+Problem roku 2038 wynika ze sposobu przechowywania czasu uniksowego w niektórych starszych systemach komputerowych. W systemach wykorzystujących 32-bitową liczbę całkowitą ze znakiem do zapisywania liczby sekund maksymalna dodatnia wartość wynosi 2147483647.
 
 
-\section{Preliminaria}\label{preliminaria}
-\subsection{Rodzaje logik}
-(\dots)
-\subsection{Pojęcia związane z logikami}
-(\dots)
-\subsection{Alternujące maszyny Turinga}
-(\dots)
-\subsection{Klasy złożoności obliczeniowej}
-(\dots)
-\subsection{Postaci normalne}
-(\dots)
-\section{Nierozstrzygalność złożenia}\label{nierozstrzygalnosc-zlozenia}
-(\dots)
-\section{Własność modelu rozgałęzionego}\label{rozstrzygalnosc-fo2}
-(\dots)
-\section{Ujęcie algorytmiczne}\label{algorytm}
-\subsection{Opis algorytmu}
-(\dots)
-\subsection{Algorytm}
-(\dots)
-\subsection{Analiza algorytmu}
-(\dots)
-\section{Podsumowanie}
-(\dots)
+\section{Indukcja matematyczna}\label{prelimeracja}
+Chcemy pokazać, że dla każdego $n \in \mathbb{N}$ zachodzi $\sum_{i=0}^n 2^i + 1 = 2^{n+1}$. Zatem zdefiniujmy następujący zbiór:
+\[
+X = \{n \in \mathbb{N} : \sum_{i=0}^n 2^i + 1 = 2^{n+1}\}
+\]
+
+\subsection{Podstawa indukcji}
+Dla $n = 0$
+\[
+\sum_{i=0}^0 2^i + 1 = 2^{0+1}
+\]
+\[
+2^0 + 1 = 2^1
+\]
+\[
+2 = 2
+\]
+
+zatem $0 \in X$
+
+\subsection{Założenie indukcyjne}
+
+Weźmy dowolne $n \in \mathbb{N}$ dla którego zachodzi $\sum_{i=0}^n 2^i + 1 = 2^{n+1}$\\
+Pokażemy, że zachodzi dla $n+1$
+
+\subsection{Krok indukcji}
+
+Teza: $\sum_{i=0}^{n+1} 2^i + 1 = 2^{n+2}$
+
+Skorzystajmy z założenia indukcyjnego.
+\[
+\sum_{i=0}^n 2^i + 1 = 2^{n+1}
+\]
+\[
+\sum_{i=0}^n 2^i + 2^{n+1} + 1 = 2^{n+1} + 2^{n+1}
+\]
+\[
+\sum_{i=0}^{n+1} 2^i + 1 = 2^{n+2}
+\]
+
+Teza zachodzi zatem $n+1 \in X$\\
+z czego wynika, że $X=\mathbb{N}$
 
 % Osadzona bibliografia; zwykle bibliografię się generuje narzędziem bibtex, ale jest ono poza ramami tego przedmiotu.
 \begin{thebibliography}{12}
